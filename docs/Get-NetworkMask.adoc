@@ -1,0 +1,78 @@
+= Get-NetworkMask
+:source-language: powershell
+:toc: left
+:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
+:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
+:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
+:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+
+Module: xref:../README.adoc[]
+
+Gets a network mask that represents a given number of network bits.
+
+== Syntax
+[source]
+----
+Get-NetworkMask
+    -Bits [int]
+    [-Raw]
+    [<CommonParameters>]
+----
+
+== Description
+The `Get-NetworkMask` cmdlet generates a well-formatted network mask with a given number of bits set.
+
+== Examples
+.Get a network mask
+====
+[source]
+----
+[string] $Mask = Get-NetworkMask -Bits 32
+----
+====
+
+.Get a network mask as a *byte[]*
+====
+[source]
+----
+[byte[]] $Mask = Get-NetworkMask -Bits 12 -Raw
+----
+====
+
+== Parameters
+[discrete]
+=== `-Bits`
+Specifies the number of bits to set in the mask.
+
+[cols="h,a"]
+|===
+| Type | {type-int}[int]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | True
+| Accept Wildcard Characters | False
+|===
+
+[discrete]
+=== `-Raw`
+Indicates that this cmdlet returns a *byte[]*. By default, this cmdlet outputs a well-formatted string.
+
+[cols="h,a"]
+|===
+| Type | {type-switch}[SwitchParameter]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | False
+| Accept Wildcard Characters | False
+|===
+
+== Inputs
+{type-int}[*int*]
+
+You can pipe an *int* to this cmdlet.
+
+== Outputs
+{type-string}[*string*] or {type-byte}[*byte[\]*]
+
+This cmdlet returns a *byte[]* if the *Raw* parameter is specified. Otherwise, this cmdlet returns a well-formatted string. 

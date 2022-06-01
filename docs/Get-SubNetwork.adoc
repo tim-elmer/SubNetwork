@@ -1,0 +1,109 @@
+= Get-SubNetwork
+:source-language: powershell
+:toc: left
+:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
+:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
+:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
+:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+
+Module: xref:../README.adoc[]
+
+Gets information about a sub-network.
+
+== Syntax
+[source]
+----
+Get-SubNetwork
+    -Address [string]
+    -Bits [int]
+    [<CommonParameters>]
+----
+[source]
+----
+Get-SubNetwork
+    -Address [string]
+    -Mask [string] | [byte[]] | [IPAddress]
+    [<CommonParameters>]
+----
+
+== Description
+The `Get-SubNetwork` cmdlet aggregates the `Get-NetworkAddress`, `Get-NetworkBits`, and `Get-NetworkMask` cmdlets, placing their output in an anonymous object for easy viewing or consumption.
+
+== Examples
+.Get sub-network information with network address and network bits
+====
+[source]
+----
+$NetworkInfo = Get-SubNetwork -Address 10.0.0.0 -Bits 8
+----
+This example calculates the network mask of the described network.
+====
+
+.Get sub-network information with address in network and network mask
+====
+[source]
+----
+$NetworkInfo = Get-SubNetwork -Address 192.168.1.42 -Mask 255.255.255.0
+----
+This example calculates the network address and network bits of the described network.
+====
+
+== Parameters
+[discrete]
+=== `-Address`
+Specifies the IP address of the network, or an IP address within the network.
+
+[cols="h,a"]
+|===
+| Type | {type-string}[string], {type-byte}[byte[\]], or {type-ipaddress}[IPAddress]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | True
+| Accept Wildcard Characters | False
+|===
+
+[discrete]
+=== `-Bits`
+Specifies the number of network bits.
+
+[cols="h,a"]
+|===
+| Type | {type-int}[int]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | False
+| Accept Wildcard Characters | False
+|===
+
+[discrete]
+=== `-Mask`
+Specifies the network mask.
+
+[cols="h,a"]
+|===
+| Type | {type-string}[string], {type-byte}[byte[\]], or {type-ipaddress}[IPAddress]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | False
+| Accept Wildcard Characters | False
+|===
+
+== Inputs
+{type-string}[*string*], {type-byte}[*byte[\]*], or {type-ipaddress}[*IPAddress*]
+
+You can pipe a *string*, *byte[]*, or *IPAddress* to this cmdlet.
+
+== Outputs
+https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.pscustomobject[*PSCustomObject*]
+
+This cmdlet returns a *PSCustomObject* with the following structure:
+
+[source]
+----
+{
+    [string] Address
+    [string] Mask
+    [int] MaskBits
+}
+----
