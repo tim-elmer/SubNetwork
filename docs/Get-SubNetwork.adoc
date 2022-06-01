@@ -7,7 +7,7 @@
 :type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
 :type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
 
-Module: xref:../README.adoc[]
+Module: xref:../README.adoc[SubNetwork]
 
 Gets information about a sub-network.
 
