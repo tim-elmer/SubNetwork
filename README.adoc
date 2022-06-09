@@ -2,10 +2,11 @@
 
 IMPORTANT: This module requires https://github.com/PowerShell/PowerShell[PowerShell Core].
 
-The SubNetwork module contains cmdlets for working with sub-networks.
+The SubNetwork module contains functions for working with sub-networks.
 
 [cols="a,"]
 |===
+| xref:docs/Get-BroadcastAddress.adoc[Get-BroadcastAddress] | Gets the broadcast address of a sub-network.
 | xref:docs/Get-NetworkAddress.adoc[Get-NetworkAddress] | Gets the network address of a sub-network.
 | xref:docs/Get-NetworkBits.adoc[Get-NetworkBits] | Gets the number of network bits represented by a network mask.
 | xref:docs/Get-NetworkMask.adoc[Get-NetworkMask] | Gets the network mask represented by a number of network bits.

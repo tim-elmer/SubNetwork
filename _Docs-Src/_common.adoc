@@ -1,0 +1,9 @@
+:source-language: powershell
+:toc: left
+:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
+:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
+:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-ipab: xref:./IpAddressBits/Index.adoc
+:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
+:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32

@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Docs",
+            "type": "shell",
+            "command": [
+                "Set-Location -Path (Join-Path -Path '${workspaceFolder}' -ChildPath '_Docs-Src');",
+                "if ([bool]::Parse('${input:doClear}')) {",
+                "   Get-ChildItem -Path '../Docs' | Remove-Item",
+                "};",
+                "Get-ChildItem -Path '*' -Filter '*.adoc' -Exclude '_*.adoc' | ForEach-Object -Process {",
+                "   wsl asciidoctor-reducer \"$($PSItem.Name)\" -o \"../Docs/$($PSItem.Name)\"",
+                "};"
+            ],
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "doClear",
+            "type": "pickString",
+            "description": "Clear output directory?",
+            "default": "true",
+            "options": [
+                "true",
+                "false"
+            ]
+        }
+    ]
+}

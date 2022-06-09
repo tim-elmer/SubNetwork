@@ -4,8 +4,10 @@
 :type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
 :type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
 :type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-ipab: xref:./IpAddressBits/Index.adoc
 :type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
 :type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
 
 Module: xref:../README.adoc[SubNetwork]
 
@@ -15,8 +17,7 @@ Gets a network mask that represents a given number of network bits.
 [source]
 ----
 Get-NetworkMask
-    -Bits [int]
-    [-Raw]
+    [-Bits] <int>
     [<CommonParameters>]
 ----
 
@@ -29,14 +30,6 @@ The `Get-NetworkMask` cmdlet generates a well-formatted network mask with a give
 [source]
 ----
 [string] $Mask = Get-NetworkMask -Bits 32
-----
-====
-
-.Get a network mask as a *byte[]*
-====
-[source]
-----
-[byte[]] $Mask = Get-NetworkMask -Bits 12 -Raw
 ----
 ====
 
@@ -54,25 +47,12 @@ Specifies the number of bits to set in the mask.
 | Accept Wildcard Characters | False
 |===
 
-[discrete]
-=== `-Raw`
-Indicates that this cmdlet returns a *byte[]*. By default, this cmdlet outputs a well-formatted string.
-
-[cols="h,a"]
-|===
-| Type | {type-switch}[SwitchParameter]
-| Position | Named
-| Default Value | None
-| Accept Pipeline Input | False
-| Accept Wildcard Characters | False
-|===
-
 == Inputs
 {type-int}[*int*]
 
 You can pipe an *int* to this cmdlet.
 
 == Outputs
-{type-string}[*string*] or {type-byte}[*byte[\]*]
+{type-ipab}[*IpAddressBits*]
 
-This cmdlet returns a *byte[]* if the *Raw* parameter is specified. Otherwise, this cmdlet returns a well-formatted string. 
+This cmdlet returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*]

@@ -4,8 +4,10 @@
 :type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
 :type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
 :type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-ipab: xref:./IpAddressBits/Index.adoc
 :type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
 :type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
 
 Module: xref:../README.adoc[SubNetwork]
 
@@ -15,20 +17,20 @@ Gets information about a sub-network.
 [source]
 ----
 Get-SubNetwork
-    -Address [string]
-    -Bits [int]
+    [-Address] <string>
+    [-Bits] <int>
     [<CommonParameters>]
 ----
 [source]
 ----
 Get-SubNetwork
-    -Address [string]
-    -Mask [string] | [byte[]] | [IPAddress]
+    [-Address] <string>
+    [-Mask] <string> | <byte[]> | <IPAddress>
     [<CommonParameters>]
 ----
 
 == Description
-The `Get-SubNetwork` cmdlet aggregates the `Get-NetworkAddress`, `Get-NetworkBits`, and `Get-NetworkMask` cmdlets, placing their output in an anonymous object for easy viewing or consumption.
+The `Get-SubNetwork` cmdlet aggregates the `Get-BroadcastAddress`, `Get-NetworkAddress`, `Get-NetworkBits`, and `Get-NetworkMask` functions, placing their output in an anonymous object for easy viewing or consumption.
 
 == Examples
 .Get sub-network information with network address and network bits
@@ -102,8 +104,9 @@ This cmdlet returns a *PSCustomObject* with the following structure:
 [source]
 ----
 {
-    [string] Address
-    [string] Mask
-    [int] MaskBits
+    [IpAddressBytes] 'Network Address'
+    [IpAddressBytes] 'Broadcast Address'
+    [IpAddressBytes] Mask
+    [byte] 'Mask Bits'
 }
 ----

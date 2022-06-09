@@ -9,10 +9,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = './SubNetwork.psm1'
+RootModule = 'SubNetwork.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -66,10 +66,18 @@ PowerShellVersion = '7.2.0'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-# NestedModules = @()
+NestedModules = @(
+    'Modules/IpAddressBits/IpAddressBits.psm1'
+)
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-SubNetwork', 'Get-NetworkAddress', 'Get-NetworkMask', 'Get-NetworkBits')
+FunctionsToExport = @(
+    'Get-BroadcastAddress',
+    'Get-NetworkAddress',
+    'Get-NetworkBits',
+    'Get-NetworkMask',
+    'Get-SubNetwork'
+)
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -87,7 +95,17 @@ AliasesToExport = @()
 # ModuleList = @()
 
 # List of all files packaged with this module
-FileList = @('./SubNetwork.psd1', './SubNetwork.psm1', './LICENSE.adoc', './README.adoc', './docs/Get-NetworkAddress.adoc', './docs/Get-NetworkBits.adoc', './docs/Get-NetworkMask.adoc', './docs/Get-SubNetwork.adoc')
+FileList = @(
+    'SubNetwork.psd1', 
+    'SubNetwork.psm1', 
+    'LICENSE.adoc', 
+    'README.adoc', 
+    'Docs/Get-NetworkAddress.adoc', 
+    'Docs/Get-NetworkBits.adoc', 
+    'Docs/Get-NetworkMask.adoc', 
+    'Docs/Get-SubNetwork.adoc', 
+    'Modules/IpAddressBits/IpAddressBits.psm1'
+)
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
@@ -98,10 +116,10 @@ PrivateData = @{
         # Tags = @()
 
         # A URL to the license for this module.
-        # LicenseUri = 'https://github.com/tim-elmer/SubNetwork/blob/master/LICENSE.adoc'
+        LicenseUri = 'https://github.com/tim-elmer/SubNetwork/blob/master/LICENSE.adoc'
 
         # A URL to the main website for this project.
-        # ProjectUri = 'https://github.com/tim-elmer/SubNetwork'
+        ProjectUri = 'https://github.com/tim-elmer/SubNetwork'
 
         # A URL to an icon representing this module.
         # IconUri = ''
@@ -123,7 +141,7 @@ PrivateData = @{
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
-# HelpInfoURI = 'https://github.com/tim-elmer/SubNetwork'
+HelpInfoURI = 'https://github.com/tim-elmer/SubNetwork'
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 # DefaultCommandPrefix = ''

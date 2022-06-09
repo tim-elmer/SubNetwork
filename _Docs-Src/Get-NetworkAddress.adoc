@@ -1,11 +1,4 @@
 = Get-NetworkAddress
-:source-language: powershell
-:toc: left
-:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
-:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
-:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
-:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
-:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
 
 Module: xref:../README.adoc[SubNetwork]
 
@@ -15,17 +8,15 @@ Gets the network address of a sub-network.
 [source]
 ----
 Get-NetworkAddress
-    -Address [string] | [byte[]] | [IPAddress]
-    -Mask [string] | [byte[]] | [IPAddress]
-    [-Raw]
+    [-Address] <string> | <byte[]> | <IPAddress>
+    [-Mask] <string> | <byte[]> | <IPAddress>
     [<CommonParameters>]
 ----
 [source]
 ----
 Get-NetworkAddress
-    -Address [string] | [byte[]] | [IPAddress]
-    -Bits [int]
-    [-Raw]
+    [-Address] <string> | <byte[]> | <IPAddress>
+    [-Bits] <int>
     [<CommonParameters>]
 ----
 
@@ -97,24 +88,12 @@ Specifies the network mask bits.
 | Accept Wildcard Characters | False
 |===
 
-[discrete]
-=== `-Raw`
-Indicates that this cmdlet returns an *IPAddress* object. By default, this cmdlet outputs the network address as a well-formatted string.
-
-|===
-| Type | {type-switch}[SwitchParameter]
-| Position | Named
-| Default Value | None
-| Accept Pipeline Input | False
-| Accept Wildcard Characters | False
-|===
-
 == Inputs
-{type-string}[*string*], {type-byte}[*byte[\]*], or {type-ipaddress}[*IPAddress*]
+{type-string}[*string*], {type-byte}[*byte[\]*], {type-uint32}[*UInt32*], {type-ipaddress}[*IPAddress*], or {type-ipab}[*IpAddressBits]
 
-You can pipe a *string*, *byte[]* or *IPAddress* object to this cmdlet.
+You can pipe a *string*, *byte[]*, *UInt32*, *IPAddress* object, or *IpAddressBits* object to this cmdlet.
 
 == Outputs
-{type-string}[*string*] or {type-ipaddress}[*IPAddress*]
+{type-ipab}[*IpAddressBits*]
 
-This cmdlet returns an *IPAddress* if the *Raw* parameter is specified. Otherwise this cmdlet outputs a *string*.
+This cmdlet returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*]
