@@ -1,0 +1,17 @@
+= IpAddressBits.ToUInt32 Method
+:root: ..
+include::{root}/_common.adoc[tag=head]
+
+== Definition
+// tag::def[]
+Converts the {type-ipab}[IpAddressBits] to an {type-uint32}[UInt32].
+// end::def[]
+
+[source]
+----
+[UInt32] ToBytes()
+----
+
+[discrete]
+=== Returns
+{type-uint32}[UInt32]:: A {type-uint32}[UInt32].

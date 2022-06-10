@@ -6,10 +6,10 @@ Module: xref:../README.adoc[SubNetwork]
 Gets the number of network bits represented by a network mask.
 
 == Syntax
-[source]
+[source, subs="+attributes"]
 ----
 Get-NetworkBits
-    [-Mask] {syntax-ipab}
+    [[-Mask] {syntax-ipab}]
     [<CommonParameters>]
 ----
 
@@ -33,7 +33,7 @@ Specifies a network mask.
 [cols="h,a"]
 |===
 include::_common.adoc[tag=types-ipab]
-| Position | Named
+| Position | 0
 | Default Value | None
 | Accept Pipeline Input | True
 | Accept Wildcard Characters | False
@@ -43,4 +43,4 @@ include::_common.adoc[tag=types-ipab]
 include::_common.adoc[tag=input-ipab]
 
 == Outputs
-include::_common.adoc[tag=output-ipab]
+{type-byte}[*byte*]

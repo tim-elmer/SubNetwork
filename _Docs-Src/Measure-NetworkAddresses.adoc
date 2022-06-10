@@ -1,0 +1,85 @@
+= Measure-NetworkAddresses
+include::_common.adoc[tag=head]
+
+Module: xref:../README.adoc[SubNetwork]
+
+Gets the number of addresses in a network.
+
+== Syntax
+[source]
+----
+Measure-NetworkAddresses
+    [[-Mask] {syntax-ipab}]
+    [-Assignable]
+    [<CommonParameters>]
+----
+[source]
+----
+Measure-NetworkAddresses
+    [[-Bits] <int>]
+    [-Assignable]
+    [<CommonParameters>]
+----
+
+== Description
+The `Measure-NetworkAddresses` function gets the number of network addresses that are available in a given network.
+
+== Examples
+.Get the number of network addresses in a given network mask
+====
+[source]
+----
+[UInt32] $Addresses = Measure-NetworkAddresses -Mask 255.250.0.0
+----
+====
+
+.Get the number of assignable network addresses in a network with a given number of network bits
+====
+[source]
+----
+[UInt32] $Addresses = Measure-NetworkAddresses -Assignable -Bits 24
+----
+====
+
+== Parameters
+[discrete]
+=== `-Mask`
+Specifies a network mask.
+
+[cols="h,a"]
+|===
+include::_common.adoc[tag=types-ipab]
+| Position | 0
+| Default Value | None
+| Accept Pipeline Input | True
+| Accept Wildcard Characters | False
+|===
+
+[discrete]
+=== `-Bits`
+Specifies the network mask bits.
+
+[cols="h,a"]
+|===
+| Type | {type-int}[int]
+| Position | 0
+| Default Value | None
+| Accept Pipeline Input | True
+| Accept Wildcard Characters | False
+|===
+
+[discrete]
+=== `-Assignable`
+Specifies that addresses should be limited to those assignable (not network or broadcast).
+
+[cols="h,a"]
+|===
+| Type | {type-switch}[switch]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | False
+| Accept Wildcard Characters | False
+|===
+
+== Outputs
+{type-uint32}[*UInt32*]

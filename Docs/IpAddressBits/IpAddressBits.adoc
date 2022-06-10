@@ -44,9 +44,13 @@ Initializes a new instance of the {type-ipab}[IpAddressBits] class with the addr
 == Methods
 [cols="a,"]
 |===
-| xref:./And.adoc[And(IpAddressBits, IpAddressBits)] |
+| xref:./And.adoc#ipaddressbits[] |
+Combines an {type-ipab}[IpAddressBits] with another {type-ipab}[IpAddressBits] by binary and.
+| xref:./And.adoc#ipaddressbits-ipaddressbits[] |
 Combines two {type-ipab}[IpAddressBits] objects by binary and.
-| xref:./Or.adoc[Or(IpAddressBits, IpAddressBits)] |
+| xref:./Or.adoc#ipaddressbits[] |
+Combines an {type-ipab}[IpAddressBits] with another {type-ipab}[IpAddressBits] by binary or.
+| xref:./Or.adoc#ipaddressbits-ipaddressbits[] |
 Combines two {type-ipab}[IpAddressBits] objects by binary or.
 | xref:./Count.adoc[Count()] |
 Counts the number of set bits in the {type-ipab}[IpAddressBits].
@@ -56,4 +60,6 @@ Converts the {type-ipab}[IpAddressBits] to an {type-ipaddress}[IPAddress].
 Converts the {type-ipab}[IpAddressBits] to an {type-ipaddress}[IPAddress].
 | xref:./ToString.adoc[ToString()] |
 Converts the {type-ipab}[IpAddressBits] to an {type-string}[string].
+| xref:./ToUInt32.adoc[ToUInt32()] |
+Converts the {type-ipab}[IpAddressBits] to an {type-uint32}[UInt32].
 |===

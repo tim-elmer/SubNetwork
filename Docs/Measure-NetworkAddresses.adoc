@@ -1,4 +1,4 @@
-= Get-NetworkAddress
+= Measure-NetworkAddresses
 :xroot: .
 :source-language: powershell
 :toc: left
@@ -16,48 +16,48 @@
 
 Module: xref:../README.adoc[SubNetwork]
 
-Gets the network address of a sub-network.
+Gets the number of addresses in a network.
 
 == Syntax
-[source, subs="+attributes"]
+[source]
 ----
-Get-NetworkAddress
-    [[-Address] {syntax-ipab}]
-    [-Mask] {syntax-ipab}
+Measure-NetworkAddresses
+    [[-Mask] {syntax-ipab}]
+    [-Assignable]
     [<CommonParameters>]
 ----
-[source, subs="+attributes"]
+[source]
 ----
-Get-NetworkAddress
-    [[-Address] {syntax-ipab}]
-    [-Bits] <int>
+Measure-NetworkAddresses
+    [[-Bits] <int>]
+    [-Assignable]
     [<CommonParameters>]
 ----
 
 == Description
-The `Get-NetworkAddress` function determines the network address of a sub-network from an IP address within that sub-network and the information provided.
+The `Measure-NetworkAddresses` function gets the number of network addresses that are available in a given network.
 
 == Examples
-.Get the network address of a given IP address with a given network mask.
+.Get the number of network addresses in a given network mask
 ====
 [source]
 ----
-Get-NetworkAddress -Address 192.168.0.32 -Mask 255.255.255.0
+[UInt32] $Addresses = Measure-NetworkAddresses -Mask 255.250.0.0
 ----
 ====
 
-.Get the network address of a given IP address with a given number of network bits.
+.Get the number of assignable network addresses in a network with a given number of network bits
 ====
 [source]
 ----
-Get-NetworkAddress -Address 192.168.0.32 -Bits 24
+[UInt32] $Addresses = Measure-NetworkAddresses -Assignable -Bits 24
 ----
 ====
 
 == Parameters
 [discrete]
-=== `-Address`
-Specifies an IP address within the sub-network.
+=== `-Mask`
+Specifies a network mask.
 
 [cols="h,a"]
 |===
@@ -69,37 +69,30 @@ Specifies an IP address within the sub-network.
 |===
 
 [discrete]
-=== `-Mask`
-Specifies the network mask.
-
-[cols="h,a"]
-|===
-| Type | {type-byte}[byte[\]], {type-ipaddress}[IPAddress], {type-ipab}[IpAddressBits], {type-string}[string], or {type-uint32}[UInt32]
-| Position | 1
-| Default Value | None
-| Accept Pipeline Input | False
-| Accept Wildcard Characters | False
-|===
-
-[discrete]
 === `-Bits`
 Specifies the network mask bits.
 
 [cols="h,a"]
 |===
 | Type | {type-int}[int]
-| Position | 1
+| Position | 0
+| Default Value | None
+| Accept Pipeline Input | True
+| Accept Wildcard Characters | False
+|===
+
+[discrete]
+=== `-Assignable`
+Specifies that addresses should be limited to those assignable (not network or broadcast).
+
+[cols="h,a"]
+|===
+| Type | {type-switch}[switch]
+| Position | Named
 | Default Value | None
 | Accept Pipeline Input | False
 | Accept Wildcard Characters | False
 |===
 
-== Inputs
-{type-byte}[*byte[\]*], {type-ipaddress}[*IPAddress*], {type-ipab}[*IpAddressBits], {type-string}[*string*], or {type-uint32}[*UInt32*]
-
-You can pipe a *string*, *byte[]*, *UInt32*, *IPAddress* object, or *IpAddressBits* object to this function.
-
 == Outputs
-{type-ipab}[*IpAddressBits*]
-
-This function returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*].
+{type-uint32}[*UInt32*]

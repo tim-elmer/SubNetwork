@@ -9,14 +9,14 @@ Gets the broadcast address of a sub-network.
 [source, subs="+attributes"]
 ----
 Get-BroadcastAddress
-    [-Address] {syntax-ipab}
+    [[-Address] {syntax-ipab}]
     [-Mask] {syntax-ipab}
     [<CommonParameters>]
 ----
 [source, subs="+attributes"]
 ----
 Get-BroadcastAddress
-    [-Address] {syntax-ipab}
+    [[-Address] {syntax-ipab}]
     [-Bits] <int>
     [<CommonParameters>]
 ----
@@ -49,7 +49,7 @@ Specifies an IP address within the sub-network.
 [cols="h,a"]
 |===
 include::_common.adoc[tag=types-ipab]
-| Position | Named
+| Position | 0
 | Default Value | None
 | Accept Pipeline Input | True
 | Accept Wildcard Characters | False
@@ -62,7 +62,7 @@ Specifies the network mask.
 [cols="h,a"]
 |===
 include::_common.adoc[tag=types-ipab]
-| Position | Named
+| Position | 1
 | Default Value | None
 | Accept Pipeline Input | False
 | Accept Wildcard Characters | False
@@ -75,7 +75,7 @@ Specifies the network mask bits.
 [cols="h,a"]
 |===
 | Type | {type-int}[int]
-| Position | Named
+| Position | 1
 | Default Value | None
 | Accept Pipeline Input | False
 | Accept Wildcard Characters | False

@@ -105,6 +105,10 @@ class IpAddressBits {
         return [IpAddressBits]::new($left._data -band $right._data)
     }
 
+    [IpAddressBits] And([IpAddressBits] $other) {
+        return [IpAddressBits]::And($this, $other)
+    }
+
     static [IpAddressBits] Or([IpAddressBits] $left, [IpAddressBits] $right) {
         if ($null -eq $left) {
             throw [ArgumentNullException]::new('left')
@@ -114,6 +118,10 @@ class IpAddressBits {
         }
 
         return [IpAddressBits]::new($left._data -bor $right._data)
+    }
+
+    [IpAddressBits] Or([IpAddressBits] $other) {
+        return [IpAddressBits]::Or($this, $other)
     }
 
     # Count the number of set bits in an IP Address
@@ -140,5 +148,10 @@ class IpAddressBits {
     # Get the IP Address as a string
     [string] ToString() {
         return [string]::Format('{0}.{1}.{2}.{3}', ($this.ToBytes() | ForEach-Object -Process { $PSItem.ToString() }))
+    }
+
+    # Get the IP Address as an unsigned integer
+    [UInt32] ToUInt32() {
+        return $this._data
     }
 }

@@ -20,6 +20,42 @@
 Combines two {type-ipab}[IpAddressBits] objects by binary or.
 // end::def[]
 
+== Overloads
+[cols="a,"]
+|===
+// tag::overloads[]
+| xref:./Or.adoc#ipaddressbits[] |
+Combines an {type-ipab}[IpAddressBits] with another {type-ipab}[IpAddressBits] by binary or.
+| xref:./Or.adoc#ipaddressbits-ipaddressbits[] |
+Combines two {type-ipab}[IpAddressBits] objects by binary or.
+// end::overloads[]
+|===
+
+[[ipaddressbits]]
+== Or(IpAddressBits)
+// tag::desc-ipaddressbits[]
+Combines an {type-ipab}[IpAddressBits] with another {type-ipab}[IpAddressBits] by binary or.
+// end::desc-ipaddressbits[]
+[source]
+----
+[IpAddressBits] Or([IpAddressBits] $other)
+----
+
+[discrete]
+=== Parameters
+`other` {type-ipab}[IpAddressBits]:: An IP address to combine.
+
+[discrete]
+=== Returns
+{type-ipab}[IpAddressBits]:: The combination of the given address with this one.
+
+[discrete]
+=== Exceptions
+{type-ane}[ArgumentNullException]:: `other` is `null`.
+
+[[ipaddressbits-ipaddressbits]]
+== Or(IpAddressBits, IpAddressBits)
+Combines two {type-ipab}[IpAddressBits] objects by binary or.
 [source]
 ----
 [IpAddressBits] [IpAddressBits]::Or([IpAddressBits] $left, [IpAddressBits] $right)
@@ -37,9 +73,6 @@ Combines two {type-ipab}[IpAddressBits] objects by binary or.
 [discrete]
 === Exceptions
 {type-ane}[ArgumentNullException]:: `left` or `right` is `null`.
-
-== Remarks
-This method will output an address where each bit is set if the corresponding bits in _either_ given addresses were also set.
 
 == Related
 xref:./And.adoc[]::

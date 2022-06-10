@@ -7,6 +7,48 @@ include::{root}/_common.adoc[tag=head]
 Combines two {type-ipab}[IpAddressBits] objects by binary and.
 // end::def[]
 
+== Overloads
+[cols="a,"]
+|===
+// tag::overloads[]
+| xref:./And.adoc#ipaddressbits[] |
+include::./And.adoc[tag=desc-ipaddressbits]
+| xref:./And.adoc#ipaddressbits-ipaddressbits[] |
+include::./And.adoc[tag=def]
+// end::overloads[]
+|===
+
+[[ipaddressbits]]
+== And(IpAddressBits)
+// tag::desc-ipaddressbits[]
+Combines an {type-ipab}[IpAddressBits] with another {type-ipab}[IpAddressBits] by binary and.
+// end::desc-ipaddressbits[]
+[source]
+----
+[IpAddressBits] And([IpAddressBits] $other)
+----
+
+[discrete]
+=== Parameters
+`other` {type-ipab}[IpAddressBits]:: An IP address to combine.
+
+[discrete]
+=== Returns
+{type-ipab}[IpAddressBits]:: The combination of the given address with this one.
+
+[discrete]
+=== Exceptions
+{type-ane}[ArgumentNullException]:: `other` is `null`.
+
+[discrete]
+=== Remarks
+// tag::rem[]
+This method will output an address where each bit is set if the corresponding bits in _both_ given addresses were also set. This can be useful for dealing with network masks.
+// end::rem[]
+
+[[ipaddressbits-ipaddressbits]]
+== And(IpAddressBits, IpAddressBits)
+include::./And.adoc[tag=def]
 [source]
 ----
 [IpAddressBits] [IpAddressBits]::And([IpAddressBits] $left, [IpAddressBits] $right)
@@ -25,8 +67,9 @@ Combines two {type-ipab}[IpAddressBits] objects by binary and.
 === Exceptions
 {type-ane}[ArgumentNullException]:: `left` or `right` is `null`.
 
-== Remarks
-This method will output an address where each bit is set if the corresponding bits in _both_ given addresses were also set. This can be useful for dealing with network masks.
+[discrete]
+=== Remarks
+include::./And.adoc[tag=rem]
 
 == Related
 xref:./Or.adoc[]::

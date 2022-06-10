@@ -1,5 +1,6 @@
-= Get-NetworkMask
-:xroot: .
+= IpAddressBits.ToUInt32 Method
+:root: ..
+:xroot: {root}
 :source-language: powershell
 :toc: left
 :type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
@@ -14,50 +15,16 @@
 :type-ane: https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception
 :type-aor: https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception
 
-Module: xref:../README.adoc[SubNetwork]
+== Definition
+// tag::def[]
+Converts the {type-ipab}[IpAddressBits] to an {type-uint32}[UInt32].
+// end::def[]
 
-Gets a network mask that represents a given number of network bits.
-
-== Syntax
 [source]
 ----
-Get-NetworkMask
-    [[-Bits] <byte>]
-    [<CommonParameters>]
+[UInt32] ToBytes()
 ----
 
-== Description
-The `Get-NetworkMask` function generates a network mask with a given number of bits set.
-
-== Examples
-.Get a network mask
-====
-[source]
-----
-[IpAddressBits] $Mask = Get-NetworkMask -Bits 32
-----
-====
-
-== Parameters
 [discrete]
-=== `-Bits`
-Specifies the number of bits to set in the mask.
-
-[cols="h,a"]
-|===
-| Type | {type-byte}[byte]
-| Position | 0
-| Default Value | None
-| Accept Pipeline Input | True
-| Accept Wildcard Characters | False
-|===
-
-== Inputs
-{type-byte}[*byte*]
-
-You can pipe a *byte* to this function.
-
-== Outputs
-{type-ipab}[*IpAddressBits*]
-
-This function returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*].
+=== Returns
+{type-uint32}[UInt32]:: A {type-uint32}[UInt32].

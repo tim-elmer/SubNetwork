@@ -19,23 +19,23 @@ Module: xref:../README.adoc[SubNetwork]
 Gets information about a sub-network.
 
 == Syntax
-[source]
+[source, subs="+attributes"]
 ----
 Get-SubNetwork
-    [-Address] {syntax-ipab}
+    [[-Address] {syntax-ipab}]
     [-Bits] <byte>
     [<CommonParameters>]
 ----
-[source]
+[source, subs="+attributes"]
 ----
 Get-SubNetwork
-    [-Address] {syntax-ipab}
+    [[-Address] {syntax-ipab}]
     [-Mask] {syntax-ipab}
     [<CommonParameters>]
 ----
 
 == Description
-The `Get-SubNetwork` function aggregates the `Get-BroadcastAddress`, `Get-NetworkAddress`, `Get-NetworkBits`, and `Get-NetworkMask` functions, placing their output in an anonymous object for easy viewing or consumption.
+The `Get-SubNetwork` function aggregates the `Get-BroadcastAddress`, `Get-NetworkAddress`, `Get-NetworkBits`, `Get-NetworkMask`, and `Measure-NetworkAddresses` functions, placing their output in an anonymous object for easy viewing or consumption.
 
 == Examples
 .Get sub-network information with network address and network bits
@@ -64,7 +64,7 @@ Specifies the IP address of the network, or an IP address within the network.
 [cols="h,a"]
 |===
 | Type | {type-byte}[byte[\]], {type-ipaddress}[IPAddress], {type-ipab}[IpAddressBits], {type-string}[string], or {type-uint32}[UInt32]
-| Position | Named
+| Position | 0
 | Default Value | None
 | Accept Pipeline Input | True
 | Accept Wildcard Characters | False
@@ -77,7 +77,7 @@ Specifies the number of network bits.
 [cols="h,a"]
 |===
 | Type | {type-byte}[byte]
-| Position | Named
+| Position | 1
 | Default Value | None
 | Accept Pipeline Input | False
 | Accept Wildcard Characters | False
@@ -90,7 +90,7 @@ Specifies the network mask.
 [cols="h,a"]
 |===
 | Type | {type-byte}[byte[\]], {type-ipaddress}[IPAddress], {type-ipab}[IpAddressBits], {type-string}[string], or {type-uint32}[UInt32]
-| Position | Named
+| Position | 1
 | Default Value | None
 | Accept Pipeline Input | False
 | Accept Wildcard Characters | False
@@ -111,7 +111,8 @@ This cmdlet returns a *PSCustomObject* with the following structure:
 {
     [IpAddressBytes] 'Network Address'
     [IpAddressBytes] 'Broadcast Address'
-    [IpAddressBytes] Mask
+    [UInt32] 'Addresses Assignable'
+    [IpAddressBytes] 'Network Mask'
     [byte] 'Mask Bits'
 }
 ----

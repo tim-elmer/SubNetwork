@@ -19,10 +19,8 @@ include::./Ctor.adoc[tag=overloads]
 == Methods
 [cols="a,"]
 |===
-| xref:./And.adoc[And(IpAddressBits, IpAddressBits)] |
-include::./And.adoc[tag=def]
-| xref:./Or.adoc[Or(IpAddressBits, IpAddressBits)] |
-include::./Or.adoc[tag=def]
+include::./And.adoc[tag=overloads]
+include::./Or.adoc[tag=overloads]
 | xref:./Count.adoc[Count()] |
 include::./Count.adoc[tag=def]
 | xref:./ToBytes.adoc[ToBytes()] | 
@@ -31,4 +29,6 @@ include::./ToBytes.adoc[tag=def]
 include::./ToIpAddress.adoc[tag=def]
 | xref:./ToString.adoc[ToString()] |
 include::./ToString.adoc[tag=def]
+| xref:./ToUInt32.adoc[ToUInt32()] |
+include::./ToUInt32.adoc[tag=def]
 |===

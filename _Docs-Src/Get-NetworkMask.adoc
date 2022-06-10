@@ -9,7 +9,7 @@ Gets a network mask that represents a given number of network bits.
 [source]
 ----
 Get-NetworkMask
-    [-Bits] <byte>
+    [[-Bits] <byte>]
     [<CommonParameters>]
 ----
 
@@ -33,7 +33,7 @@ Specifies the number of bits to set in the mask.
 [cols="h,a"]
 |===
 | Type | {type-byte}[byte]
-| Position | Named
+| Position | 0
 | Default Value | None
 | Accept Pipeline Input | True
 | Accept Wildcard Characters | False
