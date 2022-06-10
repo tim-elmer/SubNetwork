@@ -4,16 +4,13 @@
         {
             "label": "Build Docs",
             "type": "shell",
-            "command": [
-                "Set-Location -Path (Join-Path -Path '${workspaceFolder}' -ChildPath '_Docs-Src');",
-                "if ([bool]::Parse('${input:doClear}')) {",
-                "   Get-ChildItem -Path '../Docs' | Remove-Item -Recurse",
-                "};",
-                "Get-ChildItem -Recurse -Path '*' -Filter '*.adoc' -Exclude '_*.adoc' -File | ForEach-Object -Process {",
-                "   $target = (Resolve-Path -Path $PSItem.FullName -Relative).Replace('\\', '/');",
-                "   wsl asciidoctor-reducer $target -o (Join-Path -Path '../Docs' -ChildPath $target).Replace('\\', '/');",
-                "};"
-            ],
+            "command": "${workspaceFolder}/.vscode/Tasks/BuildDocs.ps1 '${workspaceFolder}' ${input:doClear}",
+            "problemMatcher": []
+        },
+        {
+            "label": "Package",
+            "type": "shell",
+            "command": "${workspaceFolder}/.vscode/Tasks/Package.ps1 '${workspaceFolder}'",
             "problemMatcher": []
         }
     ],

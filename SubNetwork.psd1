@@ -15,7 +15,9 @@ RootModule = 'SubNetwork.psm1'
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+CompatiblePSEditions = @(
+    'Core'
+)
 
 # ID used to uniquely identify this module
 GUID = '3a1af809-839f-4be8-b5f9-1af684419624'
