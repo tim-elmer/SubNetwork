@@ -13,7 +13,7 @@ function Get-HostMask {
     )
 
     # Shift a full uint right the number of bits the network covers to mask the host bits
-    return [IpAddressBits]::new([UInt32]::MaxValue -shr ($null -ne $Bits ? $Bits : $Mask.Count()))
+    return [IpAddressBits]::new([UInt32]::MaxValue -shr (0 -ne $Bits ? $Bits : $Mask.Count()))
 }
 
 <#
@@ -48,7 +48,7 @@ function Get-SubNetwork {
     
     [bool] $_useMask = -not [string]::IsNullOrWhiteSpace($Mask)
     [IpAddressBits] $_mask = $_useMask ? [IpAddressBits]::new($Mask) : (Get-NetworkMask -Bits $Bits)
-    [ipaddress] $_address = [ipaddress]::Parse($Address)
+    [IpAddressBits] $_address = [IpAddressBits]::new($Address)
     [hashtable] $_networkAddressArgs = $_useMask ? @{Mask = $_mask} : @{Bits = $Bits}
 
     Write-Output -InputObject ([PSCustomObject]@{
