@@ -1,4 +1,4 @@
-= Get-SubNetwork
+= Get-BroadcastAddress
 :source-language: powershell
 :toc: left
 :type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
@@ -15,50 +15,48 @@
 
 Module: xref:../README.adoc[SubNetwork]
 
-Gets information about a sub-network.
+Gets the broadcast address of a sub-network.
 
 == Syntax
-[source]
+[source, subs="+attributes"]
 ----
-Get-SubNetwork
-    [-Address] {syntax-ipab}
-    [-Bits] <byte>
-    [<CommonParameters>]
-----
-[source]
-----
-Get-SubNetwork
+Get-BroadcastAddress
     [-Address] {syntax-ipab}
     [-Mask] {syntax-ipab}
     [<CommonParameters>]
 ----
+[source, subs="+attributes"]
+----
+Get-BroadcastAddress
+    [-Address] {syntax-ipab}
+    [-Bits] <int>
+    [<CommonParameters>]
+----
 
 == Description
-The `Get-SubNetwork` function aggregates the `Get-BroadcastAddress`, `Get-NetworkAddress`, `Get-NetworkBits`, and `Get-NetworkMask` functions, placing their output in an anonymous object for easy viewing or consumption.
+The `Get-BroadcastAddress` function determines the broadcast address of a sub-network from an IP address within that sub-network and the information provided.
 
 == Examples
-.Get sub-network information with network address and network bits
+.Get the broadcast address of a given IP address with a given network mask.
 ====
 [source]
 ----
-$NetworkInfo = Get-SubNetwork -Address 10.0.0.0 -Bits 8
+Get-BroadcastAddress -Address 192.168.0.32 -Mask 255.255.255.0
 ----
-This example calculates the network mask of the described network.
 ====
 
-.Get sub-network information with address in network and network mask
+.Get the broadcast address of a given IP address with a given number of network bits.
 ====
 [source]
 ----
-$NetworkInfo = Get-SubNetwork -Address 192.168.1.42 -Mask 255.255.255.0
+Get-BroadcastAddress -Address 192.168.0.32 -Bits 24
 ----
-This example calculates the network address and network bits of the described network.
 ====
 
 == Parameters
 [discrete]
 === `-Address`
-Specifies the IP address of the network, or an IP address within the network.
+Specifies an IP address within the sub-network.
 
 [cols="h,a"]
 |===
@@ -66,19 +64,6 @@ Specifies the IP address of the network, or an IP address within the network.
 | Position | Named
 | Default Value | None
 | Accept Pipeline Input | True
-| Accept Wildcard Characters | False
-|===
-
-[discrete]
-=== `-Bits`
-Specifies the number of network bits.
-
-[cols="h,a"]
-|===
-| Type | {type-byte}[byte]
-| Position | Named
-| Default Value | None
-| Accept Pipeline Input | False
 | Accept Wildcard Characters | False
 |===
 
@@ -95,22 +80,25 @@ Specifies the network mask.
 | Accept Wildcard Characters | False
 |===
 
+[discrete]
+=== `-Bits`
+Specifies the network mask bits.
+
+[cols="h,a"]
+|===
+| Type | {type-int}[int]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | False
+| Accept Wildcard Characters | False
+|===
+
 == Inputs
 {type-byte}[*byte[\]*], {type-ipaddress}[*IPAddress*], {type-ipab}[*IpAddressBits], {type-string}[*string*], or {type-uint32}[*UInt32*]
 
 You can pipe a *string*, *byte[]*, *UInt32*, *IPAddress* object, or *IpAddressBits* object to this function.
 
 == Outputs
-https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.pscustomobject[*PSCustomObject*]
+{type-ipab}[*IpAddressBits*]
 
-This cmdlet returns a *PSCustomObject* with the following structure:
-
-[source]
-----
-{
-    [IpAddressBytes] 'Network Address'
-    [IpAddressBytes] 'Broadcast Address'
-    [IpAddressBytes] Mask
-    [byte] 'Mask Bits'
-}
-----
+This function returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*].

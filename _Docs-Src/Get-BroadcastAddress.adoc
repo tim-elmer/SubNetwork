@@ -1,43 +1,43 @@
-= Get-NetworkAddress
+= Get-BroadcastAddress
 include::_common.adoc[tag=head]
 
 Module: xref:../README.adoc[SubNetwork]
 
-Gets the network address of a sub-network.
+Gets the broadcast address of a sub-network.
 
 == Syntax
 [source, subs="+attributes"]
 ----
-Get-NetworkAddress
+Get-BroadcastAddress
     [-Address] {syntax-ipab}
     [-Mask] {syntax-ipab}
     [<CommonParameters>]
 ----
 [source, subs="+attributes"]
 ----
-Get-NetworkAddress
+Get-BroadcastAddress
     [-Address] {syntax-ipab}
     [-Bits] <int>
     [<CommonParameters>]
 ----
 
 == Description
-The `Get-NetworkAddress` function determines the network address of a sub-network from an IP address within that sub-network and the information provided.
+The `Get-BroadcastAddress` function determines the broadcast address of a sub-network from an IP address within that sub-network and the information provided.
 
 == Examples
-.Get the network address of a given IP address with a given network mask.
+.Get the broadcast address of a given IP address with a given network mask.
 ====
 [source]
 ----
-Get-NetworkAddress -Address 192.168.0.32 -Mask 255.255.255.0
+Get-BroadcastAddress -Address 192.168.0.32 -Mask 255.255.255.0
 ----
 ====
 
-.Get the network address of a given IP address with a given number of network bits.
+.Get the broadcast address of a given IP address with a given number of network bits.
 ====
 [source]
 ----
-Get-NetworkAddress -Address 192.168.0.32 -Bits 24
+Get-BroadcastAddress -Address 192.168.0.32 -Bits 24
 ----
 ====
 

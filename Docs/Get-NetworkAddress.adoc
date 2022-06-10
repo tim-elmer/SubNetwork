@@ -4,7 +4,7 @@
 :type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
 :type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
 :type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
-:type-ipab: xref:{root}/IpAddressBits/Index.adoc
+:type-ipab: xref:./IpAddressBits/Index.adoc
 :type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
 :type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
 :type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
@@ -50,14 +50,6 @@ Get-NetworkAddress -Address 192.168.0.32 -Mask 255.255.255.0
 [source]
 ----
 Get-NetworkAddress -Address 192.168.0.32 -Bits 24
-----
-====
-
-.Get the network address of a given IP address as an IPAddress object
-====
-[source]
-----
-[System.Net.IPAddress] $NetworkAddress = Get-NetworkAddress -Address 10.0.0.250 -Bits 16 -Raw
 ----
 ====
 
