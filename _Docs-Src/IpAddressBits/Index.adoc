@@ -1,0 +1,34 @@
+[[IpAddressBits]]
+= IpAddressBits Class
+:root: ..
+include::{root}/_common.adoc[tag=head]
+
+== Definition
+The IpAddressBits class offers bit-level operations on IP Addresses and similar structures such as network masks.
+
+[source]
+----
+class IpAddressBits
+----
+
+Inheritance https://docs.microsoft.com/en-us/dotnet/api/system.object[Object] -> IpAddressBits
+
+== Constructors
+include::./Ctor.adoc[tag=overloads]
+
+== Methods
+[cols="a,"]
+|===
+| xref:./And.adoc[And(IpAddressBits, IpAddressBits)] |
+include::./And.adoc[tag=def]
+| xref:./Or.adoc[Or(IpAddressBits, IpAddressBits)] |
+include::./Or.adoc[tag=def]
+| xref:./Count.adoc[Count()] |
+include::./Count.adoc[tag=def]
+| xref:./ToBytes.adoc[ToBytes()] | 
+include::./ToBytes.adoc[tag=def]
+| xref:./ToIpAddress.adoc[ToIpAddress()] | 
+include::./ToIpAddress.adoc[tag=def]
+| xref:./ToString.adoc[ToString()] |
+include::./ToString.adoc[tag=def]
+|===

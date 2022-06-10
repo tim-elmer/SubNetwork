@@ -1,13 +1,5 @@
 = Get-NetworkMask
-:source-language: powershell
-:toc: left
-:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
-:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
-:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
-:type-ipab: xref:./IpAddressBits/Index.adoc
-:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
-:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
-:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
+include::_common.adoc[tag=head]
 
 Module: xref:../README.adoc[SubNetwork]
 
@@ -17,19 +9,19 @@ Gets a network mask that represents a given number of network bits.
 [source]
 ----
 Get-NetworkMask
-    [-Bits] <int>
+    [-Bits] <byte>
     [<CommonParameters>]
 ----
 
 == Description
-The `Get-NetworkMask` cmdlet generates a well-formatted network mask with a given number of bits set.
+The `Get-NetworkMask` function generates a network mask with a given number of bits set.
 
 == Examples
 .Get a network mask
 ====
 [source]
 ----
-[string] $Mask = Get-NetworkMask -Bits 32
+[IpAddressBits] $Mask = Get-NetworkMask -Bits 32
 ----
 ====
 
@@ -40,7 +32,7 @@ Specifies the number of bits to set in the mask.
 
 [cols="h,a"]
 |===
-| Type | {type-int}[int]
+| Type | {type-byte}[byte]
 | Position | Named
 | Default Value | None
 | Accept Pipeline Input | True
@@ -48,11 +40,9 @@ Specifies the number of bits to set in the mask.
 |===
 
 == Inputs
-{type-int}[*int*]
+{type-byte}[*byte*]
 
-You can pipe an *int* to this cmdlet.
+You can pipe a *byte* to this function.
 
 == Outputs
-{type-ipab}[*IpAddressBits*]
-
-This cmdlet returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*]
+include::_common.adoc[tag=output-ipab]

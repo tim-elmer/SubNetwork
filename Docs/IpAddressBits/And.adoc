@@ -1,0 +1,45 @@
+= IpAddressBits.And(IpAddressBits, IpAddressBits) Method
+:root: ..
+:source-language: powershell
+:toc: left
+:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
+:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
+:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-ipab: xref:./IpAddressBits/Index.adoc
+:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
+:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
+:syntax-ipab: <byte[]> | <IPAddress> | <IpAddressBits> | <string> | <UInt32>
+:type-ae: https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception
+:type-ane: https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception
+:type-aor: https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception
+
+== Definition
+// tag::def[]
+Combines two {type-ipab}[IpAddressBits] objects by binary and.
+// end::def[]
+
+[source]
+----
+[IpAddressBits] [IpAddressBits]::And([IpAddressBits] $left, [IpAddressBits] $right)
+----
+
+[discrete]
+=== Parameters
+`left` {type-ipab}[IpAddressBits]:: An IP address to combine.
+`right` {type-ipab}[IpAddressBits]:: An IP address to combine.
+
+[discrete]
+=== Returns
+{type-ipab}[IpAddressBits]:: The combination of the two given addresses.
+
+[discrete]
+=== Exceptions
+{type-ane}[ArgumentNullException]:: `left` or `right` is `null`.
+
+== Remarks
+This method will output an address where each bit is set if the corresponding bits in _both_ given addresses were also set. This can be useful for dealing with network masks.
+
+== Related
+xref:./Or.adoc[]::
+Combines two {type-ipab}[IpAddressBits] objects by binary or.

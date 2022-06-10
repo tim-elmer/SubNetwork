@@ -1,0 +1,17 @@
+= IpAddressBits.ToString Method
+:root: ..
+include::{root}/_common.adoc[tag=head]
+
+== Definition
+// tag::def[]
+Converts the {type-ipab}[IpAddressBits] to an {type-string}[string].
+// end::def[]
+
+[source]
+----
+[string] ToString()
+----
+
+[discrete]
+=== Returns
+{type-string}[IPAddress]:: A {type-string}[string].

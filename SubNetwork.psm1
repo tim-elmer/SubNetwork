@@ -16,7 +16,7 @@ The number of network bits defining the sub-network.
 The sub-network mask.
 
 .OUTPUTS
-An anonymous object where Address, Mask, and MaskBits represent the network address, network mask, and network mask bits respectively.
+An anonymous object where 'Network Address', 'Broadcast Address', Mask, and 'Mask Bits' representing the respective properties.
 #>
 function Get-SubNetwork {
     [OutputType([PSCustomObject])]
@@ -26,7 +26,7 @@ function Get-SubNetwork {
         [string] $Address,
         # The number of network bits
         [Parameter(ParameterSetName = "UseCidr", Position = 1)]
-        [int] $Bits,
+        [byte] $Bits,
         # The network mask
         [Parameter(ParameterSetName = "UseMask", Position = 1)]
         [string] $Mask 
@@ -47,10 +47,10 @@ function Get-SubNetwork {
 
 <#
 .SYNOPSIS
-Gets the network address of a sub-network.
+Gets the network address of a network.
 
 .PARAMETER Address
-Specifies an IP address within the sub-network.
+Specifies an IP address within the network.
 
 .PARAMETER Mask
 Specifies the network mask.
@@ -58,11 +58,8 @@ Specifies the network mask.
 .PARAMETER Bits
 Specifies the network mask bits.
 
-.PARAMETER Raw
-If set, the network address is returned as an IPAddress object.
-
 .OUTPUTS
-string or IPAddress
+IpAddressBits
 The network address.
 #>
 function Get-NetworkAddress {
@@ -89,18 +86,15 @@ Gets a network mask that represents a given number of network bits.
 .PARAMETER Bits
 The number of network bits.
 
-.PARAMETER Raw
-If set, the network mask is returned as an array of bytes.
-
 .OUTPUTS
-string or byte[]
+IpAddressBits
 The network mask.
 #>
 function Get-NetworkMask {
     param (
         # The number of network bits
         [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
-        [int] $Bits
+        [byte] $Bits
     )
 
     return [IPAddressBits]::new($Bits)
@@ -114,7 +108,7 @@ Gets the number of network bits represented by a network mask.
 Specifies a network mask.
 
 .OUTPUTS
-int
+byte
 The number of network bits.
 #>
 function Get-NetworkBits {
@@ -127,6 +121,23 @@ function Get-NetworkBits {
     return [IPAddressBits]::new($Mask).Count()
 }
 
+<#
+.SYNOPSIS
+Gets the broadcast address of a network.
+
+.PARAMETER Address
+Specifies an IP address within the network.
+
+.PARAMETER Mask
+Specifies the network mask.
+
+.PARAMETER Bits
+Specifies the network mask bits.
+
+.OUTPUTS
+IpAddressBits
+The broadcast address.
+#>
 function Get-BroadcastAddress {
     param (
         [Parameter(Mandatory, Position = 0, ValueFromPipeline)]

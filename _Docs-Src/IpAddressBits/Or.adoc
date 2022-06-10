@@ -1,0 +1,33 @@
+= IpAddressBits.Or(IpAddressBits, IpAddressBits) Method
+:root: ..
+include::{root}/_common.adoc[tag=head]
+
+== Definition
+// tag::def[]
+Combines two {type-ipab}[IpAddressBits] objects by binary or.
+// end::def[]
+
+[source]
+----
+[IpAddressBits] [IpAddressBits]::Or([IpAddressBits] $left, [IpAddressBits] $right)
+----
+
+[discrete]
+=== Parameters
+`left` {type-ipab}[IpAddressBits]:: An IP address to combine.
+`right` {type-ipab}[IpAddressBits]:: An IP address to combine.
+
+[discrete]
+=== Returns
+{type-ipab}[IpAddressBits]:: The combination of the two given addresses.
+
+[discrete]
+=== Exceptions
+{type-ane}[ArgumentNullException]:: `left` or `right` is `null`.
+
+== Remarks
+This method will output an address where each bit is set if the corresponding bits in _either_ given addresses were also set.
+
+== Related
+xref:./And.adoc[]::
+include::./And.adoc[tag=def]

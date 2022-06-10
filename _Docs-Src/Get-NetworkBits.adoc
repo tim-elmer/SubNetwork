@@ -1,13 +1,5 @@
 = Get-NetworkBits
-:source-language: powershell
-:toc: left
-:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
-:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
-:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
-:type-ipab: xref:./IpAddressBits/Index.adoc
-:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
-:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
-:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
+include::_common.adoc[tag=head]
 
 Module: xref:../README.adoc[SubNetwork]
 
@@ -17,12 +9,12 @@ Gets the number of network bits represented by a network mask.
 [source]
 ----
 Get-NetworkBits
-    [-Mask] <string> | <byte[]> | <IPAddress>
+    [-Mask] {syntax-ipab}
     [<CommonParameters>]
 ----
 
 == Description
-The `Get-NetworkBits` cmdlet gets the number of bits that are set in a given network mask.
+The `Get-NetworkBits` function gets the number of bits that are set in a given network mask.
 
 == Examples
 .Get the number of bits in a network mask
@@ -40,7 +32,7 @@ Specifies a network mask.
 
 [cols="h,a"]
 |===
-| Type | {type-string}[string], {type-byte}[byte[\]], or {type-ipaddress}[IPAddress]
+include::_common.adoc[tag=types-ipab]
 | Position | Named
 | Default Value | None
 | Accept Pipeline Input | True
@@ -48,11 +40,7 @@ Specifies a network mask.
 |===
 
 == Inputs
-{type-string}[*string*], {type-byte}[*byte[\]*], {type-uint32}[*UInt32*], {type-ipaddress}[*IPAddress*], or {type-ipab}[*IpAddressBits]
-
-You can pipe a *string*, *byte[]*, *UInt32*, *IPAddress* object, or *IpAddressBits* object to this cmdlet.
+include::_common.adoc[tag=input-ipab]
 
 == Outputs
-{type-byte}[*byte*]
-
-This cmdlet returns a count of the set bits in *Mask*.
+include::_common.adoc[tag=output-ipab]

@@ -1,0 +1,17 @@
+= IpAddressBits.Count Method
+:root: ..
+include::{root}/_common.adoc[tag=head]
+
+== Definition
+// tag::def[]
+Counts the number of set bits in the {type-ipab}[IpAddressBits].
+// end::def[]
+
+[source]
+----
+[byte] Count()
+----
+
+[discrete]
+=== Returns
+{type-byte}[byte]:: The number of bits set in the given address.

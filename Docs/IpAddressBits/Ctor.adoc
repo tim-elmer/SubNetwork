@@ -1,0 +1,136 @@
+= IpAddressBits Constructors
+:root: ..
+:source-language: powershell
+:toc: left
+:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
+:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
+:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-ipab: xref:./IpAddressBits/Index.adoc
+:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
+:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
+:syntax-ipab: <byte[]> | <IPAddress> | <IpAddressBits> | <string> | <UInt32>
+:type-ae: https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception
+:type-ane: https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception
+:type-aor: https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception
+
+== Definition
+Initializes a new instance of the {type-ipab}[IpAddressBits] class.
+
+== Overloads
+// tag::overloads[]
+[cols="a,"]
+|===
+| xref:./Ctor.adoc#system-byte-array[IpAddressBits(byte)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-byte}[Byte] array.
+| xref:./Ctor.adoc#system-byte[IpAddressBits(byte[\])] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the specified number of bits set.
+| xref:./Ctor.adoc#system-net-ipaddress[IpAddressBits(IPAddress)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-ipaddress}[IPAddress].
+| xref:./Ctor.adoc#ipaddressbits[IpAddressBits(IpAddressBits)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-ipab}[IpAddressBits].
+| xref:./Ctor.adoc#system-uint32[IpAddressBits(UInt32)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-uint32}[UInt32].
+|===
+// end::overloads[]
+
+[[system-byte]]
+== IpAddressBits(byte)
+// tag::desc-system-byte[]
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-byte}[Byte] array.
+// end::desc-system-byte[]
+
+[source]
+----
+[IpAddressBits]::new([byte] $bits)
+----
+
+[discrete]
+=== Parameters
+`bits` {type-byte}[byte]:: The number of bits to set on in the address (starting from the first octet's highest bit).
+
+[discrete]
+=== Exceptions
+{type-aor}[ArgumentOutOfRangeException]:: `bits` is larger than 32.
+
+[discrete]
+=== Remarks
+This constructor is useful for creating subnet masks.
+
+[[system-byte-array]]
+== IpAddressBits(byte[])
+// tag::desc-system-byte-array[]
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the specified number of bits set.
+// end::desc-system-byte-array[]
+
+[source]
+----
+[IpAddressBits]::new([byte[]] $bytes)
+----
+
+[discrete]
+=== Parameters
+`bytes` {type-byte}[byte[\]]:: A byte array containing the octets of an IP Address.
+
+[discrete]
+=== Exceptions
+{type-ae}[ArgumentException]:: `bytes` contains an invalid number of octets. The length of `bytes` must be _exactly_ four.
+{type-ane}[ArgumentNullException]:: `bytes` is `null`.
+
+[[system-net-ipaddress]]
+== IpAddressBits(IPAddress)
+// tag::desc-system-net-ipaddress[]
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-ipaddress}[IPAddress].
+// end::desc-system-net-ipaddress[]
+
+[source]
+----
+[IpAddressBits]::new([IPAddress] $ipAddress)
+----
+
+[discrete]
+=== Parameters
+`ipAddress` {type-ipaddress}[IPAddress]:: An {type-ipaddress}[IPAddress] to set the address from.
+
+[discrete]
+=== Exceptions
+{type-ae}[ArgumentException]:: `ipAddress` is not an IPv4 address. Non-IPv4 addresses are not supported.
+{type-ane}[ArgumentNullException]:: `ipAddress` is `null`.
+
+[[ipaddressbits]]
+== IpAddressBits(IpAddressBits)
+// tag::desc-ipaddressbits[]
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-ipab}[IpAddressBits].
+// end::desc-ipaddressbits[]
+
+[source]
+----
+[IpAddressBits]::new([IpAddressBits] $ipAddress)
+----
+
+[discrete]
+=== Parameters
+`ipAddress` {type-ipab}[IpAddressBits]:: An {type-ipab}[IpAddressBits] to copy.
+
+[discrete]
+=== Exceptions
+{type-ane}[ArgumentNullException]:: `ipAddress` is `null`.
+
+[discrete]
+=== Remarks
+This constructor probably isn't what you are looking for; it's provided for PowerShell's type coercion.
+
+[[system-uint32]]
+== IpAddressBits(UInt32)
+// tag::desc-system-uint32[]
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-uint32}[UInt32].
+// end::desc-system-uint32[]
+
+[source]
+----
+[IpAddressBits]::new([UInt32] $bits)
+----
+
+[discrete]
+=== Parameters
+`bits` {type-uint32}[UInt32]:: An unsigned integer from which to construct an {type-ipab}[IpAddressBits].

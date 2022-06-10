@@ -1,5 +1,17 @@
 = Get-NetworkAddress
-include::_common.adoc[tag=head]
+:source-language: powershell
+:toc: left
+:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
+:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
+:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-ipab: xref:{root}/IpAddressBits/Index.adoc
+:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
+:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
+:syntax-ipab: <byte[]> | <IPAddress> | <IpAddressBits> | <string> | <UInt32>
+:type-ae: https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception
+:type-ane: https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception
+:type-aor: https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception
 
 Module: xref:../README.adoc[SubNetwork]
 
@@ -56,7 +68,7 @@ Specifies an IP address within the sub-network.
 
 [cols="h,a"]
 |===
-include::_common.adoc[tag=types-ipab]
+| Type | {type-byte}[byte[\]], {type-ipaddress}[IPAddress], {type-ipab}[IpAddressBits], {type-string}[string], or {type-uint32}[UInt32]
 | Position | Named
 | Default Value | None
 | Accept Pipeline Input | True
@@ -69,7 +81,7 @@ Specifies the network mask.
 
 [cols="h,a"]
 |===
-include::_common.adoc[tag=types-ipab]
+| Type | {type-byte}[byte[\]], {type-ipaddress}[IPAddress], {type-ipab}[IpAddressBits], {type-string}[string], or {type-uint32}[UInt32]
 | Position | Named
 | Default Value | None
 | Accept Pipeline Input | False
@@ -90,7 +102,11 @@ Specifies the network mask bits.
 |===
 
 == Inputs
-include::_common.adoc[tag=input-ipab]
+{type-byte}[*byte[\]*], {type-ipaddress}[*IPAddress*], {type-ipab}[*IpAddressBits], {type-string}[*string*], or {type-uint32}[*UInt32*]
+
+You can pipe a *string*, *byte[]*, *UInt32*, *IPAddress* object, or *IpAddressBits* object to this function.
 
 == Outputs
-include::_common.adoc[tag=output-ipab]
+{type-ipab}[*IpAddressBits*]
+
+This function returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*].

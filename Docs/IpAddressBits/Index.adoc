@@ -1,0 +1,58 @@
+[[IpAddressBits]]
+= IpAddressBits Class
+:root: ..
+:source-language: powershell
+:toc: left
+:type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
+:type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
+:type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
+:type-ipab: xref:./IpAddressBits/Index.adoc
+:type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
+:type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
+:type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
+:syntax-ipab: <byte[]> | <IPAddress> | <IpAddressBits> | <string> | <UInt32>
+:type-ae: https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception
+:type-ane: https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception
+:type-aor: https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception
+
+== Definition
+The IpAddressBits class offers bit-level operations on IP Addresses and similar structures such as network masks.
+
+[source]
+----
+class IpAddressBits
+----
+
+Inheritance https://docs.microsoft.com/en-us/dotnet/api/system.object[Object] -> IpAddressBits
+
+== Constructors
+[cols="a,"]
+|===
+| xref:./Ctor.adoc#system-byte-array[IpAddressBits(byte)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-byte}[Byte] array.
+| xref:./Ctor.adoc#system-byte[IpAddressBits(byte[\])] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the specified number of bits set.
+| xref:./Ctor.adoc#system-net-ipaddress[IpAddressBits(IPAddress)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-ipaddress}[IPAddress].
+| xref:./Ctor.adoc#ipaddressbits[IpAddressBits(IpAddressBits)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-ipab}[IpAddressBits].
+| xref:./Ctor.adoc#system-uint32[IpAddressBits(UInt32)] |
+Initializes a new instance of the {type-ipab}[IpAddressBits] class with the address specified as a {type-uint32}[UInt32].
+|===
+
+== Methods
+[cols="a,"]
+|===
+| xref:./And.adoc[And(IpAddressBits, IpAddressBits)] |
+Combines two {type-ipab}[IpAddressBits] objects by binary and.
+| xref:./Or.adoc[Or(IpAddressBits, IpAddressBits)] |
+Combines two {type-ipab}[IpAddressBits] objects by binary or.
+| xref:./Count.adoc[Count()] |
+Counts the number of set bits in the {type-ipab}[IpAddressBits].
+| xref:./ToBytes.adoc[ToBytes()] |
+Converts the {type-ipab}[IpAddressBits] to an {type-ipaddress}[IPAddress].
+| xref:./ToIpAddress.adoc[ToIpAddress()] |
+Converts the {type-ipab}[IpAddressBits] to an {type-ipaddress}[IPAddress].
+| xref:./ToString.adoc[ToString()] |
+Converts the {type-ipab}[IpAddressBits] to an {type-string}[string].
+|===

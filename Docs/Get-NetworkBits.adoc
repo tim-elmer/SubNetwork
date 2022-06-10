@@ -1,11 +1,10 @@
-// tag::head[]
+= Get-NetworkBits
 :source-language: powershell
 :toc: left
 :type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
 :type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
 :type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
-ifdef::root[:type-ipab: xref:{root}/IpAddressBits/Index.adoc]
-ifndef::root[:type-ipab: xref:./IpAddressBits/Index.adoc]
+:type-ipab: xref:{root}/IpAddressBits/Index.adoc
 :type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
 :type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
 :type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
@@ -13,17 +12,51 @@ ifndef::root[:type-ipab: xref:./IpAddressBits/Index.adoc]
 :type-ae: https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception
 :type-ane: https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception
 :type-aor: https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception
-// end::head[]
-// tag::types-ipab[]
+
+Module: xref:../README.adoc[SubNetwork]
+
+Gets the number of network bits represented by a network mask.
+
+== Syntax
+[source]
+----
+Get-NetworkBits
+    [-Mask] {syntax-ipab}
+    [<CommonParameters>]
+----
+
+== Description
+The `Get-NetworkBits` function gets the number of bits that are set in a given network mask.
+
+== Examples
+.Get the number of bits in a network mask
+====
+[source]
+----
+[byte] $Bits = Get-NetworkBits -Mask 255.250.0.0
+----
+====
+
+== Parameters
+[discrete]
+=== `-Mask`
+Specifies a network mask.
+
+[cols="h,a"]
+|===
 | Type | {type-byte}[byte[\]], {type-ipaddress}[IPAddress], {type-ipab}[IpAddressBits], {type-string}[string], or {type-uint32}[UInt32]
-// end::types-ipab[]
-// tag::input-ipab[]
+| Position | Named
+| Default Value | None
+| Accept Pipeline Input | True
+| Accept Wildcard Characters | False
+|===
+
+== Inputs
 {type-byte}[*byte[\]*], {type-ipaddress}[*IPAddress*], {type-ipab}[*IpAddressBits], {type-string}[*string*], or {type-uint32}[*UInt32*]
 
 You can pipe a *string*, *byte[]*, *UInt32*, *IPAddress* object, or *IpAddressBits* object to this function.
-// end::input-ipab[]
-// tag::output-ipab[]
+
+== Outputs
 {type-ipab}[*IpAddressBits*]
 
 This function returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*].
-// end::output-ipab[]

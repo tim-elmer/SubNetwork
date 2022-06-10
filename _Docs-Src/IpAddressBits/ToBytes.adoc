@@ -1,0 +1,17 @@
+= IpAddressBits.ToBytes Method
+:root: ..
+include::{root}/_common.adoc[tag=head]
+
+== Definition
+// tag::def[]
+Converts the {type-ipab}[IpAddressBits] to an {type-ipaddress}[IPAddress].
+// end::def[]
+
+[source]
+----
+[byte[]] ToBytes()
+----
+
+[discrete]
+=== Returns
+{type-byte}[byte[]]:: A {type-byte}[byte] array.

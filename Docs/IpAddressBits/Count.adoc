@@ -1,11 +1,11 @@
-// tag::head[]
+= IpAddressBits.Count Method
+:root: ..
 :source-language: powershell
 :toc: left
 :type-byte: https://docs.microsoft.com/en-us/dotnet/api/system.byte
 :type-int: https://docs.microsoft.com/en-us/dotnet/api/system.int32
 :type-ipaddress: https://docs.microsoft.com/en-us/dotnet/api/system.net.ipaddress
-ifdef::root[:type-ipab: xref:{root}/IpAddressBits/Index.adoc]
-ifndef::root[:type-ipab: xref:./IpAddressBits/Index.adoc]
+:type-ipab: xref:./IpAddressBits/Index.adoc
 :type-string: https://docs.microsoft.com/en-us/dotnet/api/system.string
 :type-switch: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.switchparameter
 :type-uint32: https://docs.microsoft.com/en-us/dotnet/api/system.uint32
@@ -13,17 +13,17 @@ ifndef::root[:type-ipab: xref:./IpAddressBits/Index.adoc]
 :type-ae: https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception
 :type-ane: https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception
 :type-aor: https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception
-// end::head[]
-// tag::types-ipab[]
-| Type | {type-byte}[byte[\]], {type-ipaddress}[IPAddress], {type-ipab}[IpAddressBits], {type-string}[string], or {type-uint32}[UInt32]
-// end::types-ipab[]
-// tag::input-ipab[]
-{type-byte}[*byte[\]*], {type-ipaddress}[*IPAddress*], {type-ipab}[*IpAddressBits], {type-string}[*string*], or {type-uint32}[*UInt32*]
 
-You can pipe a *string*, *byte[]*, *UInt32*, *IPAddress* object, or *IpAddressBits* object to this function.
-// end::input-ipab[]
-// tag::output-ipab[]
-{type-ipab}[*IpAddressBits*]
+== Definition
+// tag::def[]
+Counts the number of set bits in the {type-ipab}[IpAddressBits].
+// end::def[]
 
-This function returns an *IPAddressBits*. This object will coerce neatly to a {type-string}[*string*].
-// end::output-ipab[]
+[source]
+----
+[byte] Count()
+----
+
+[discrete]
+=== Returns
+{type-byte}[byte]:: The number of bits set in the given address.

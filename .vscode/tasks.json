@@ -7,10 +7,11 @@
             "command": [
                 "Set-Location -Path (Join-Path -Path '${workspaceFolder}' -ChildPath '_Docs-Src');",
                 "if ([bool]::Parse('${input:doClear}')) {",
-                "   Get-ChildItem -Path '../Docs' | Remove-Item",
+                "   Get-ChildItem -Path '../Docs' | Remove-Item -Recurse",
                 "};",
-                "Get-ChildItem -Path '*' -Filter '*.adoc' -Exclude '_*.adoc' | ForEach-Object -Process {",
-                "   wsl asciidoctor-reducer \"$($PSItem.Name)\" -o \"../Docs/$($PSItem.Name)\"",
+                "Get-ChildItem -Recurse -Path '*' -Filter '*.adoc' -Exclude '_*.adoc' -File | ForEach-Object -Process {",
+                "   $target = (Resolve-Path -Path $PSItem.FullName -Relative).Replace('\\', '/');",
+                "   wsl asciidoctor-reducer $target -o (Join-Path -Path '../Docs' -ChildPath $target).Replace('\\', '/');",
                 "};"
             ],
             "problemMatcher": []

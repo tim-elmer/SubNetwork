@@ -1,0 +1,17 @@
+= IpAddressBits.ToIpAddress Method
+:root: ..
+include::{root}/_common.adoc[tag=head]
+
+== Definition
+// tag::def[]
+Converts the {type-ipab}[IpAddressBits] to an {type-ipaddress}[IPAddress].
+// end::def[]
+
+[source]
+----
+[IPAddress] ToIpAddress()
+----
+
+[discrete]
+=== Returns
+{type-ipaddress}[IPAddress]:: An {type-ipaddress}[IPAddress].
